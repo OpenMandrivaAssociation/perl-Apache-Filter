@@ -17,6 +17,7 @@ BuildRequires:	apache-mod_perl
 BuildRequires:  perl-devel
 #BuildRequires:	perl-Apache-Test
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 %{realname} module for perl : Alter the output of previous handlers.
