@@ -6,7 +6,7 @@
 Summary:	%{realname} module for perl
 Name:		perl-%{realname}
 Version:	1.024
-Release:	%mkrel 3
+Release:	%mkrel 5
 License:	GPL or Artistic
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{realname}
