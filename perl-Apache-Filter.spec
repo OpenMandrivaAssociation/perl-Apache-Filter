@@ -1,30 +1,33 @@
+%define upstream_name    Apache-Filter
+%define upstream_version 1.024
+
 # it wants a module from mod_perl-1.x
 %define _requires_exceptions perl(Apache::RegistryNG)
 
-%define realname Apache-Filter
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 7
 
-Summary:	%{realname} module for perl
-Name:		perl-%{realname}
-Version:	1.024
-Release:	%mkrel 6
-License:	GPL or Artistic
+Summary:	%{upstream_name} module for perl
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{realname}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Apache/%{realname}-%{version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Apache/%{upstream_name}-%{upstream_version}.tar.bz2
 Patch0:		Apache-Filter-1.024-mod_perl2.diff
-Requires:	apache-mod_perl
+
 BuildRequires:	apache-mod_perl 
 BuildRequires:  perl-devel
-#BuildRequires:	perl-Apache-Test
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
+Requires:	apache-mod_perl
 
 %description
-%{realname} module for perl : Alter the output of previous handlers.
+%{upstream_name} module for perl : Alter the output of previous handlers.
 
 %prep
-
-%setup -q -n %{realname}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 %patch0 -p0
 
 %build
@@ -32,7 +35,7 @@ APACHE=%{_sbindir}/httpd perl Makefile.PL INSTALLDIRS=vendor <<EOF
 
 
 EOF
-make
+%make
 
 #make test
 
@@ -41,7 +44,6 @@ rm -rf %{buildroot}
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall_std
 
 %files
@@ -49,6 +51,3 @@ rm -rf %{buildroot}
 %doc README Changes
 %{perl_vendorlib}/Apache
 %{_mandir}/*/*
-
-
-
