@@ -1,0 +1,44 @@
+--- lib/Apache/PerlRunFilter.pm	2005-09-25 05:02:52.000000000 +0200
++++ lib/Apache/PerlRunFilter.pm.oden	2006-01-31 14:33:38.000000000 +0100
+@@ -1,12 +1,12 @@
+ package Apache::PerlRunFilter;
+ 
+ use strict;
+-use Apache::PerlRun;
++use ModPerl::PerlRun;
+ use Apache::Constants qw(:common);
+ use Symbol;
+ use vars qw($Debug @ISA);
+ 
+-@ISA = qw(Apache::PerlRun);
++@ISA = qw(ModPerl::PerlRun);
+ 
+ 
+ sub readscript {
+@@ -120,14 +120,14 @@
+ 
+ =head1 DESCRIPTION
+ 
+-This module is a subclass of Apache::PerlRun, and contains all of its
++This module is a subclass of ModPerl::PerlRun, and contains all of its
+ functionality.  The only difference between the two is that this
+ module can be used in conjunction with the Apache::Filter module,
+-whereas Apache::PerlRun cannot.
++whereas ModPerl::PerlRun cannot.
+ 
+ It only takes a tiny little bit of code to make the filtering stuff
+ work, so perhaps it would be more appropriate for the code to be
+-integrated right into Apache::PerlRun.  As it stands, I've had to
++integrated right into ModPerl::PerlRun.  As it stands, I've had to
+ duplicate a bunch of PerlRun's code here (in the handler routine), so
+ bug fixes & feature changes must be made both places.
+ 
+@@ -143,7 +143,7 @@
+ 
+ =head1 SEE ALSO
+ 
+-perl(1), mod_perl(3), Apache::PerlRun(3)
++perl(1), mod_perl(3), ModPerl::PerlRun(3)
+ 
+ =head1 AUTHOR
+ 
