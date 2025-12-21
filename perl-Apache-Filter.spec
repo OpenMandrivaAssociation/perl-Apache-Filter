@@ -19,6 +19,7 @@ Url:		https://search.cpan.org/dist/%{upstream_name}
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Apache/%{upstream_name}-%{upstream_version}.tar.bz2
 Patch0:		Apache-Filter-1.024-mod_perl2.diff
 
+BuildRequires:	make
 BuildRequires:	apache-mod_perl 
 BuildRequires:	perl-devel
 
