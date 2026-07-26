@@ -1,6 +1,4 @@
 %define upstream_name    Apache-Filter
-%define upstream_version 1.024
-
 # it wants a module from mod_perl-1.x
 %if %{_use_internal_dependency_generator}
 %define __noautoreq 'perl\\(Apache::RegistryNG\\)'
@@ -9,14 +7,14 @@
 %endif
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	11
+Version:	1.024
+Release:	12
 
 Summary:	%{upstream_name} module for perl
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Apache/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Apache/%{upstream_name}-%{version}.tar.bz2
 Patch0:		Apache-Filter-1.024-mod_perl2.diff
 
 BuildRequires:	make
@@ -31,7 +29,7 @@ Requires:	apache-mod_perl
 %{upstream_name} module for perl : Alter the output of previous handlers.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 %patch0 -p0
 
 %build
@@ -57,9 +55,7 @@ EOF
 
 * Fri Feb 12 2010 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.24.0-7mdv2011.0
 + Revision: 504563
-- rebuild using %%perl_convert_version
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.024-6mdv2010.0
+- rebuild using %1.024 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.024-6mdv2010.0
 + Revision: 430257
 - rebuild
 
